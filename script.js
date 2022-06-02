@@ -1,5 +1,5 @@
 //initial variables
-const gridSize = 16;
+let gridSize = parseInt(prompt('Select the number of squares for length/height'));
 const squareSize = '25px';
 
 
@@ -21,7 +21,6 @@ function createGrid(size) {
         }
         container.appendChild(row);
     }
-
 }
 createGrid(gridSize);
 
