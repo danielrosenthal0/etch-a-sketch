@@ -1,6 +1,9 @@
 //initial variables
-let gridSize = parseInt(prompt('Select the number of squares for length/height'));
-const squareSize = '25px';
+let gridSize = 16;
+let squareSize = (600 / gridSize);
+squareSize = squareSize.toString() + "px";
+
+
 
 
 //creating grid of divs
@@ -23,15 +26,51 @@ function createGrid(size) {
     }
 }
 createGrid(gridSize);
+applyHover();
+
+//adding event listener for hover
+function applyHover() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.addEventListener('mouseover',hover);
+    })
+    
+    //hover function
+    function hover() {
+        this.style.backgroundColor = 'black';
+    }
+}
 
 
-//adding event listener
-const cells = document.querySelectorAll('.cell');
-cells.forEach((cell) => {
-    cell.addEventListener('mouseover',hover);
-})
+//listener for reset button
+function applyReset() {
+    const reset = document.querySelector('.reset');
+    reset.addEventListener('click',resetGrid);
+    
+    //resets the grid
+    function resetGrid() {
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            cell.style.backgroundColor = 'white';
+        })
+    }
+}
 
-//hover function
-function hover() {
-    this.style.backgroundColor = 'black';
+
+//listener for adjust gridsize
+const adjust = document.querySelector('.adjust');
+adjust.addEventListener('click',getSize);
+
+//gets size from user
+function getSize() {
+    gridSize = parseInt(prompt('Select the number of squares for length/height'));
+    squareSize = (600 / gridSize);
+    squareSize = squareSize.toString() + "px";
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+        cell.remove();
+    })
+    createGrid(gridSize);
+    applyHover();
+    applyReset();
 }

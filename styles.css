@@ -3,5 +3,18 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 960px;
+    width: 600px;
+    height: 600px;
+    padding: 48px;
+}
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
 }
