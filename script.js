@@ -64,13 +64,18 @@ adjust.addEventListener('click',getSize);
 //gets size from user
 function getSize() {
     gridSize = parseInt(prompt('Select the number of squares for length/height'));
-    squareSize = (600 / gridSize);
-    squareSize = squareSize.toString() + "px";
-    const cells = document.querySelectorAll('.cell');
-    cells.forEach((cell) => {
-        cell.remove();
-    })
-    createGrid(gridSize);
-    applyHover();
-    applyReset();
+    if (gridSize > 25) {
+        alert('Too many squares')
+    } else {
+        squareSize = (600 / gridSize);
+        squareSize = squareSize.toString() + "px";
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            cell.remove();
+        })
+        createGrid(gridSize);
+        applyHover();
+        applyReset();
+    }
+    
 }
